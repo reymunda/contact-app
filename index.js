@@ -45,7 +45,11 @@ const main = async () => {
     
     let contact = {name,phone,email};
 
-    let contacts = JSON.parse(fs.readFileSync('./data/contacts.json','utf-8'));
+    let file = fs.readFileSync('./data/contacts.json','utf-8');
+    if(file == ""){
+        fs.writeFileSync("./data/contacts.json", "[]");
+    }
+    let contacts = JSON.parse(file);
     contacts.push(contact);
 
     fs.writeFile('./data/contacts.json', JSON.stringify(contacts,null,2), (err) => {
