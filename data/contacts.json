@@ -1,17 +1,22 @@
 [
-    {
-      "name": "Rey",
-      "phone": "123",
-      "email": "rey@gmail.com"
-    },
-    {
-      "name": "Bambang",
-      "phone": "0811234455",
-      "email": "bambang1@gmail.com"
-    },
-    {
-      "name": "Alfathur",
-      "phone": "08111111",
-      "email": "alfa.thur@gmail.com"
-    }
-  ]
+  {
+    "name": "Rey",
+    "phone": "123",
+    "email": "rey@gmail.com"
+  },
+  {
+    "name": "Bambang",
+    "phone": "0811234455",
+    "email": "bambang1@gmail.com"
+  },
+  {
+    "name": "Alfathur",
+    "phone": "08111111",
+    "email": "alfa.thur@gmail.com"
+  },
+  {
+    "name": "Test",
+    "phone": "081234567",
+    "email": "testing@gmail.com"
+  }
+]
