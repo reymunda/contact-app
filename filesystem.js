@@ -77,4 +77,18 @@ const removeContact = (phone) => {
     console.log(chalk.bgHex("#019421").white(`${phone} is successfully removed!`));
 }
 
-module.exports = {saveContact,listContact,removeContact};
+const detailContact = (phone) => {
+    const contacts = loadContact();
+    const contact = contacts.find(e => e.phone === phone);
+    if(!contact){
+        console.log(chalk.bgRed.white(`${phone} is not available or has been removed!`));
+        return false;
+    }
+    console.log('Contact Detail');
+    console.log('==============');
+    for(e in contact){
+        console.log(`${contact[e]}`);
+    }
+}
+
+module.exports = {saveContact,listContact,removeContact,detailContact};

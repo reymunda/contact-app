@@ -1,4 +1,4 @@
-const {saveContact,listContact,removeContact} = require('./filesystem');
+const {saveContact,listContact,removeContact,detailContact} = require('./filesystem');
 const yargs = require('yargs');
 
 yargs.command({
@@ -46,6 +46,20 @@ yargs.command({
     handler(argv){
         removeContact(argv.phone);
     }
+})
+
+yargs.command({
+    command: 'detail',
+    builder: {
+        phone: {
+            describe: 'Phone number',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler(argv){
+        detailContact(argv.phone);
+    }   
 })
 
 yargs.parse();
