@@ -10,6 +10,14 @@ if(!fs.existsSync('./data/contacts.json')){
     fs.writeFileSync('./data/contacts.json','[]','utf-8');
 }
 
+const loadContact = () => {
+    let file = fs.readFileSync('./data/contacts.json','utf-8');
+    if(file == ""){
+        fs.writeFileSync("./data/contacts.json", "[]");
+    }
+    return JSON.parse(file);
+}
+
 const saveContact = (name,phone,email) => {
     let contact = {name,phone,email};
 
@@ -22,11 +30,7 @@ const saveContact = (name,phone,email) => {
         return false;
     }
 
-    let file = fs.readFileSync('./data/contacts.json','utf-8');
-    if(file == ""){
-        fs.writeFileSync("./data/contacts.json", "[]");
-    }
-    let contacts = JSON.parse(file);
+    let contacts = loadContact();
     let duplicate = contacts.find(e => e.phone === phone);
     
     if(duplicate !== undefined){
@@ -39,8 +43,12 @@ const saveContact = (name,phone,email) => {
     
         console.log(chalk.bgHex("#019421").white('Contact berhasil ditambahkan!'));
     }
+}
 
+const listContact = () => {
+    let contacts = loadContact();
+    console.log(contacts);
 
 }
 
-module.exports = {saveContact};
+module.exports = {saveContact,listContact};

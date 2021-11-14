@@ -1,6 +1,5 @@
-const {saveContact} = require('./filesystem');
+const {saveContact,listContact} = require('./filesystem');
 const yargs = require('yargs');
-
 
 yargs.command({
     command: 'add',
@@ -26,9 +25,15 @@ yargs.command({
         saveContact(argv.name,argv.phone,argv.email);
         // console.log(argv.name)
     }
-})
+}).demandCommand();
 
-yargs.parse()
+yargs.command({
+    command: 'list',
+    handler(){  
+        listContact();
+    }
+})
+yargs.parse();
 
 // const main = async () => {
 //     const name = await makeQuestion("Enter your name          : "),
