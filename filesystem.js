@@ -28,13 +28,19 @@ const saveContact = (name,phone,email) => {
         fs.writeFileSync("./data/contacts.json", "[]");
     }
     let contacts = JSON.parse(file);
-    contacts.push(contact);
+    let duplicate = contacts.find(e => e.phone === phone);
+    
+    if(duplicate !== undefined){
+        console.log("Contact has been saved in the list!");
+    }else{
+        contacts.push(contact);
+        fs.writeFile('./data/contacts.json', JSON.stringify(contacts,null,2), (err) => {
+            if(err) throw err;
+        })
+    
+        console.log('Contact berhasil ditambahkan!');
+    }
 
-    fs.writeFile('./data/contacts.json', JSON.stringify(contacts,null,2), (err) => {
-        if(err) throw err;
-    })
-
-    console.log('Contact berhasil ditambahkan!');
 
 }
 
