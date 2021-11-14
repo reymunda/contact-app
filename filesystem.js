@@ -41,14 +41,40 @@ const saveContact = (name,phone,email) => {
             if(err) throw err;
         })
     
-        console.log(chalk.bgHex("#019421").white('Contact berhasil ditambahkan!'));
+        console.log(chalk.bgHex("#019421").white('Contact successfully added!'));
     }
 }
 
 const listContact = () => {
     let contacts = loadContact();
-    console.log(contacts);
-
+    contacts.forEach((e,i) => {
+        console.log(`${i+1}. Name: ${e.name} Phone: ${e.phone} Email: ${e.email ? e.email : "-"}`)
+    })
 }
 
-module.exports = {saveContact,listContact};
+const removeContact = (phone) => {
+    
+    const contacts = loadContact();
+
+    const isExist = contacts.find(e => e.phone === phone);
+    if(!isExist){
+        console.log(chalk.bgRed.white('The contact is not available or has been removed!'));
+        return false;
+    }
+
+    const result = new Promise(resolve => {
+        resolve(
+            contacts.filter(e => {
+            return removed = e.phone !== phone;
+        }));
+    })
+    .then(result => {
+        fs.writeFile('./data/contacts.json', JSON.stringify(result,null,2), (err) => {
+            if(err) throw err;
+        })
+    })
+
+    console.log(chalk.bgHex("#019421").white(`${phone} is successfully removed!`));
+}
+
+module.exports = {saveContact,listContact,removeContact};

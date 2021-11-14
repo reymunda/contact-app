@@ -1,4 +1,4 @@
-const {saveContact,listContact} = require('./filesystem');
+const {saveContact,listContact,removeContact} = require('./filesystem');
 const yargs = require('yargs');
 
 yargs.command({
@@ -33,14 +33,19 @@ yargs.command({
         listContact();
     }
 })
+
+yargs.command({
+    command: 'remove',
+    builder: {
+        phone: {
+            describe: 'Phone number',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler(argv){
+        removeContact(argv.phone);
+    }
+})
+
 yargs.parse();
-
-// const main = async () => {
-//     const name = await makeQuestion("Enter your name          : "),
-//           phone = await makeQuestion("Enter your mobile phone  : "),
-//           email = await makeQuestion("Enter your email         : ");
-
-//           saveContact(name,phone,email);
-// }
-
-// main();
