@@ -1,28 +1,41 @@
-const {saveContact, makeQuestion} = require('./filesystem');
-// let contacts = JSON.parse(fs.readFileSync('./data/contacts.json', 'utf-8'));
+const {saveContact} = require('./filesystem');
+const yargs = require('yargs');
 
 
+yargs.command({
+    command: 'add',
+    describe: 'add new contact',
+    builder: {
+        name: {
+            describe: 'Full name',
+            demandOption: true,
+            type: 'string'
+        },
+        phone: {
+            describe: 'Phone number',
+            demandOption: true,
+            type: 'string'
+        },
+        email: {
+            describe: 'Email',
+            demandOption: false,
+            type: 'string'
+        }        
+    },
+    handler(argv){
+        saveContact(argv.name,argv.phone,argv.email);
+        // console.log(argv.name)
+    }
+})
 
-// rl.question('Enter your name: ', (name) => {
-//     rl.question('Enter your phone number: ', (phone) => {
-//        let contact = {name, phone};
-//        contacts.push(contact);
+yargs.parse()
 
-//        fs.writeFile('./data/contacts.json', JSON.stringify(contacts), (err) => {
-//         if(err) throw err;
-//        })
-//        console.log('Data successfully entered!');
+// const main = async () => {
+//     const name = await makeQuestion("Enter your name          : "),
+//           phone = await makeQuestion("Enter your mobile phone  : "),
+//           email = await makeQuestion("Enter your email         : ");
 
-//        rl.close();
-//     })
-// })
+//           saveContact(name,phone,email);
+// }
 
-const main = async () => {
-    const name = await makeQuestion("Enter your name          : "),
-          phone = await makeQuestion("Enter your mobile phone  : "),
-          email = await makeQuestion("Enter your email         : ");
-
-          saveContact(name,phone,email);
-}
-
-main();
+// main();

@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/reymunda/contact-app/issues"
   },
-  "homepage": "https://github.com/reymunda/contact-app#readme"
+  "homepage": "https://github.com/reymunda/contact-app#readme",
+  "dependencies": {
+    "validator": "^13.7.0",
+    "yargs": "^17.2.1"
+  }
 }

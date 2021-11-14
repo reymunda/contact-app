@@ -8,17 +8,17 @@ if(!fs.existsSync('./data')){
 if(!fs.existsSync('./data/contacts.json')){
     fs.writeFileSync('./data/contacts.json','[]','utf-8');
 }
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-})
-const makeQuestion = (question) => {
-    return new Promise(resolve => {
-        rl.question(question, (answer) => {
-           resolve(answer); 
-        })
-    })
-}
+// const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+// })
+// const makeQuestion = (question) => {
+//     return new Promise(resolve => {
+//         rl.question(question, (answer) => {
+//            resolve(answer); 
+//         })
+//     })
+// }
 
 const saveContact = (name,phone,email) => {
     let contact = {name,phone,email};
@@ -36,7 +36,6 @@ const saveContact = (name,phone,email) => {
 
     console.log('Contact berhasil ditambahkan!');
 
-    rl.close();
 }
 
-module.exports = {makeQuestion, saveContact};
+module.exports = {saveContact};
