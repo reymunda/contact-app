@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/reymunda/contact-app#readme",
   "dependencies": {
+    "chalk": "^4.1.2",
     "validator": "^13.7.0",
     "yargs": "^17.2.1"
   }

@@ -1,5 +1,5 @@
 const fs = require('fs');
-const readline = require('readline');
+const chalk = require('chalk');
 
 if(!fs.existsSync('./data')){
     fs.mkdirSync('./data');
@@ -31,14 +31,14 @@ const saveContact = (name,phone,email) => {
     let duplicate = contacts.find(e => e.phone === phone);
     
     if(duplicate !== undefined){
-        console.log("Contact has been saved in the list!");
+        console.log(chalk.bgRed.white("Contact has been saved in the list!"));
     }else{
         contacts.push(contact);
         fs.writeFile('./data/contacts.json', JSON.stringify(contacts,null,2), (err) => {
             if(err) throw err;
         })
     
-        console.log('Contact berhasil ditambahkan!');
+        console.log(chalk.bgHex("#019421").white('Contact berhasil ditambahkan!'));
     }
 
 
