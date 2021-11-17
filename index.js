@@ -29,6 +29,7 @@ yargs.command({
 
 yargs.command({
     command: 'list',
+    describe: 'View all contact',
     handler(){  
         listContact();
     }
@@ -36,6 +37,7 @@ yargs.command({
 
 yargs.command({
     command: 'remove',
+    describe: 'Delete Contact',
     builder: {
         phone: {
             describe: 'Phone number',
@@ -50,6 +52,7 @@ yargs.command({
 
 yargs.command({
     command: 'detail',
+    describe: 'View the contact detail',
     builder: {
         phone: {
             describe: 'Phone number',
